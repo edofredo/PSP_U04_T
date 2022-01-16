@@ -51,30 +51,56 @@ public class ClienteWS {
     }
 
     private void buclePrograma() {
-        String opciones = "Introduzca una de las siguientes opciones: \n"
+        String opciones = "\n**************************************************\n"
+                + "Introduzca una de las siguientes opciones: \n"
                 + "1: Imprimir todas las zonas.\n"
                 + "2: Imprimir todos los paises.\n"
                 + "3: Imprimir todas las monedas.\n"
                 + "4: Imprimir listado de países por zona.\n"
                 + "5: Imprimir listado de paises por moneda.\n"
                 + "6: Imprimir información sobre un país.\n"
-                + "0: Salir del programa";
-        int entradaUsuario = -1;
-        while (entradaUsuario != 0) {
+                + "0: Salir del programa\n"
+                + "**************************************************\n";
+        int seleccionUsuario = -1;
+        while (seleccionUsuario != 0) {
             System.out.println(opciones);
-            entradaUsuario = Integer.parseInt(sc.nextLine());
+            seleccionUsuario = Integer.parseInt(sc.nextLine());
+            switch (seleccionUsuario) {
 
-            switch (entradaUsuario) {
+                case 0: {
+                    System.out.println("Gracias por usar el programa.");
+                    break;
+                }
                 case 1: {
+                    System.out.println("Listado de zonas:");
                     imprimeZonas();
                     break;
                 }
                 case 2: {
+                    System.out.println("Listado de Paises:");
                     imprimePaises();
                     break;
                 }
-                default: {
-
+                case 3: {
+                    System.out.println("Listado de monedas:");
+                    imprimeMonedas();
+                    break;
+                }
+                case 4: {
+                    imprimePaisesZonas();
+                    break;
+                }
+                case 5: {
+                    imprimePaisesMonedas();
+                    break;
+                }
+                case 6: {
+                    imprimeInfoPais();
+                    break;
+                }
+                default:{
+                System.out.println("Introduzca un valor válido");
+                seleccionUsuario = -1;
                 }
 
             }
@@ -111,10 +137,11 @@ public class ClienteWS {
         }
     }
 
-    private void imprimeInfoPais(String nom) {
-        String nombre = nom;
+    private void imprimeInfoPais() {
+        System.out.println("Introduzca un pais:");
+        entradaUsuario = sc.nextLine();
         for (Pais i : paises) {
-            if (i.getNombre().equalsIgnoreCase(nombre)) {
+            if (i.getNombre().equalsIgnoreCase(entradaUsuario)) {
                 String monedaPais = i.getCodigoDivisa();
                 for (Moneda m : s.getMonedas()) {
                     if (i.getCodigoDivisa().equalsIgnoreCase(m.getCodigo())) {
@@ -134,7 +161,9 @@ public class ClienteWS {
     }
 
     private void imprimePaisesZonas() {
+        System.out.println("Introduzca una zona:");
         entradaUsuario = sc.nextLine();
+        System.out.println("Listado de paises de la zona " + entradaUsuario + " :");
         for (Zona i : zonas) {
             if (i.getNombre().equalsIgnoreCase(entradaUsuario)) {
                 paises = s.getPaisesZona(i.getId());
@@ -142,13 +171,13 @@ public class ClienteWS {
                     System.out.println(p.getNombre());
                 }
             }
-
         }
     }
 
     private void imprimePaisesMonedas() {
-
+        System.out.println("Introduzca una moneda:");
         entradaUsuario = sc.nextLine();
+        System.out.println("Listado de paises que usan la divisa " + entradaUsuario + " :");
         for (Moneda i : monedas) {
             if (entradaUsuario.equalsIgnoreCase(i.getNombre())) {
                 paises = s.getPaisesMoneda(i.getCodigo());
