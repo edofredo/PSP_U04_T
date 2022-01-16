@@ -1,0 +1,145 @@
+<?xml version='1.0' encoding='UTF-8'?><!-- Published by JAX-WS RI (http://jax-ws.java.net). RI's version is Metro/2.4.3 (RELEASE-2.4.3-ad3323c; 2019-01-21T17:46:06+0000) JAXWS-RI/2.3.2 JAXWS-API/2.3.2 JAXB-RI/2.3.2 JAXB-API/2.3.2 git-revision#unknown. --><xs:schema xmlns:tns="http://tarea6/" xmlns:xs="http://www.w3.org/2001/XMLSchema" version="1.0" targetNamespace="http://tarea6/">
+
+<xs:element name="getMonedaByCodigo" type="tns:getMonedaByCodigo"/>
+
+<xs:element name="getMonedaByCodigoResponse" type="tns:getMonedaByCodigoResponse"/>
+
+<xs:element name="getMonedas" type="tns:getMonedas"/>
+
+<xs:element name="getMonedasResponse" type="tns:getMonedasResponse"/>
+
+<xs:element name="getPaises" type="tns:getPaises"/>
+
+<xs:element name="getPaisesMoneda" type="tns:getPaisesMoneda"/>
+
+<xs:element name="getPaisesMonedaResponse" type="tns:getPaisesMonedaResponse"/>
+
+<xs:element name="getPaisesResponse" type="tns:getPaisesResponse"/>
+
+<xs:element name="getPaisesZona" type="tns:getPaisesZona"/>
+
+<xs:element name="getPaisesZonaResponse" type="tns:getPaisesZonaResponse"/>
+
+<xs:element name="getZonaById" type="tns:getZonaById"/>
+
+<xs:element name="getZonaByIdResponse" type="tns:getZonaByIdResponse"/>
+
+<xs:element name="getZonas" type="tns:getZonas"/>
+
+<xs:element name="getZonasResponse" type="tns:getZonasResponse"/>
+
+<xs:element name="insertarDatos" type="tns:insertarDatos"/>
+
+<xs:element name="insertarDatosResponse" type="tns:insertarDatosResponse"/>
+
+<xs:complexType name="getPaises">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getPaisesResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pais" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="pais">
+<xs:sequence>
+<xs:element name="codigoBandera" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoDivisa" type="xs:string" minOccurs="0"/>
+<xs:element name="codigoNic" type="xs:string" minOccurs="0"/>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="idArea" type="xs:long"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPaisesZona">
+<xs:sequence>
+<xs:element name="idZona" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPaisesZonaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pais" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="insertarDatos">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="insertarDatosResponse">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getZonaById">
+<xs:sequence>
+<xs:element name="idZona" type="xs:long"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getZonaByIdResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:zona" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="zona">
+<xs:sequence>
+<xs:element name="id" type="xs:long"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMonedaByCodigo">
+<xs:sequence>
+<xs:element name="codigo" type="xs:int"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMonedaByCodigoResponse">
+<xs:sequence>
+<xs:element name="return" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getMonedas">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getMonedasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:moneda" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="moneda">
+<xs:sequence>
+<xs:element name="codigo" type="xs:string" minOccurs="0"/>
+<xs:element name="nombre" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getZonas">
+<xs:sequence/>
+</xs:complexType>
+
+<xs:complexType name="getZonasResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:zona" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPaisesMoneda">
+<xs:sequence>
+<xs:element name="codigoDivisa" type="xs:string" minOccurs="0"/>
+</xs:sequence>
+</xs:complexType>
+
+<xs:complexType name="getPaisesMonedaResponse">
+<xs:sequence>
+<xs:element name="return" type="tns:pais" minOccurs="0" maxOccurs="unbounded"/>
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
